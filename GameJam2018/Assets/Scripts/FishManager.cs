@@ -5,7 +5,7 @@ using UnityEngine;
 public class FishManager : MonoBehaviour {
 
     public Transform fish;
-    public Transform shark;
+    //public Transform shark;
     public Transform tank;
 
     [Header("Glo-Bowl Variables")]
@@ -36,7 +36,7 @@ public class FishManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        tank.transform.localScale = new Vector3(tankRadius, height / 20, tankRadius);
+        //tank.transform.localScale = new Vector3(tankRadius, height / 20, tankRadius);
 
         Pool = new FishScript[FishCount];
         SharkPool = new SharkScript[SharkCount];
