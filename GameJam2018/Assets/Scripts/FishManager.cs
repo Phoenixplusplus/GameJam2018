@@ -5,11 +5,24 @@ using UnityEngine;
 public class FishManager : MonoBehaviour {
 
     public Transform fish;
+    public Transform shark;
+    public Transform tank;
+
+    [Header("Glo-Bowl Variables")]
+    [Range(2,100)]
     public float height = 50;
+    [Range(2, 1000)]
     public float Radius = 50;
+    [Range(2, 5000)]
+    public float tankRadius = 50;
+    [Range(1, 200)]
     public int FishCount = 20;
+    [Range(1, 20)]
+    public int SharkCount = 20;
+
     public FishScript[] Pool;
-    private Vector3 _target;
+    public SharkScript[] SharkPool;
+    //private Vector3 _target;
 
     [Header("Fish Variables")]
     [Range(0, 20)]
@@ -23,7 +36,10 @@ public class FishManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+        tank.transform.localScale = new Vector3(tankRadius, height / 20, tankRadius);
+
         Pool = new FishScript[FishCount];
+        SharkPool = new SharkScript[SharkCount];
         for(int i = 0; i < FishCount; i++)
         {
             float SpawnHeight = Random.Range(1f, height - 1f);
@@ -36,8 +52,7 @@ public class FishManager : MonoBehaviour {
         {
             Pool[i].Others = Pool;
         }
-
-        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
