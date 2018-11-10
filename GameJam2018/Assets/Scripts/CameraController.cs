@@ -109,8 +109,10 @@ public class CameraController : MonoBehaviour {
 
     void StartFollowing()
     {
-        Transform Anchor = (Transform)Following.GetComponent("CameraAnchor");
-        LowerPoint.localPosition = Anchor.transform.position;
+
+        Vector3 Disp = Following.transform.position - transform.position - LowerPoint.localPosition;
+        transform.Translate(Disp);
+
     }
 
     void UpdateCameraZoom()
