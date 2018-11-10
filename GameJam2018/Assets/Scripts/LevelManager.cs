@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour {
         FM.tankRadius = tankRadius;
         FM.height = tankHeight;
         FM.spawnRadius = tankRadius * fishSpawnCutoff;
+        FM.waterOffset = waterOffset;
 
     }
 	
