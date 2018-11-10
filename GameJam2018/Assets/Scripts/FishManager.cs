@@ -52,10 +52,9 @@ public class FishManager : MonoBehaviour {
             Transform MyFish = Instantiate(fish, new Vector3(Mathf.Cos(SpawnAngle) * Random.Range(0, spawnRadius), SpawnHeight, Mathf.Sin(SpawnAngle) * Random.Range(0, spawnRadius)), Random.rotation);
             Fish[i] = MyFish.GetComponent<FishScript>();
             Fish[i].ID = i;
+            Fish[i].FM = this;
         }
         SM.Fish = Fish;
     }
-
-
 
 }

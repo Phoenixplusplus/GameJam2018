@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FishScript : MonoBehaviour {
 
-    FishManager FM;
+    public FishManager FM;
     public bool DEBUG = true;
     public int ID;
     public Vector3 Speed;
@@ -17,34 +17,24 @@ public class FishScript : MonoBehaviour {
     public LineRenderer LR_AvoidFish;
     public LineRenderer LR_Steering;
 
-    public FishScript[] Others;
-    public SharkScript[] Sharks;
-
     public Vector3 CoM;
     int CoMCount;
-    public float CoMWeight = 10;
 
     public Vector3 CoR;
     int CoRCount;
-    public float CoRWeight = 1;
 
     public float AvoidFishVisionRatio = 0.2f;
     public Vector3 AvoidFish;
     public float ClosestFishRange;
-    public float AvoidFishWeight = 2;
 
     public float AvoidTankVisionRatio = 0.2f;
-    public float AvoidTankWeight = 2f;
     public Vector3 AvoidBottomTank;
     public float ClosestBottomTankRange = 2f;
 
 
 	// Use this for initialization
 	void Start () {
-        // find Manager
-        FM = FindObjectOfType<FishManager>();
-        // spin around
-        transform.rotation = Random.rotation;
+
 	}
 	
 	// Update is called once per frame
@@ -81,8 +71,8 @@ public class FishScript : MonoBehaviour {
         // TO DO .... Apply Weighting to each
         // FIRST Pass weighting
 
-        _steering = (CoM * CoMWeight) + (CoR * CoRWeight) - (AvoidFish * AvoidFishWeight);
-        _steering -= (AvoidBottomTank * AvoidTankWeight);
+        _steering = (CoM * FM.CoMWeight) + (CoR * FM.CoRWeight) - (AvoidFish * FM.AvoidFishWeight);
+        _steering -= (AvoidBottomTank * FM.TankAvoidWeight);
 
         //Debug.Log("Time to Search " + (Time.realtimeSinceStartup - start));
 
@@ -106,7 +96,7 @@ public class FishScript : MonoBehaviour {
 
     private void ScanFish()
     {
-        foreach (FishScript FS in Others)
+        foreach (FishScript FS in FM.Fish)
         {
             if (FS.ID != ID) // don't compare on self
             {
@@ -171,13 +161,13 @@ public class FishScript : MonoBehaviour {
     {
         // CoM Orange
         LR_CoM.SetPosition(0, transform.position);
-        LR_CoM.SetPosition(1, transform.position + (CoM * CoMWeight));
+        LR_CoM.SetPosition(1, transform.position + (CoM * FM.CoMWeight));
         // CoR Green
         LR_CoR.SetPosition(0, transform.position);
-        LR_CoR.SetPosition(1, transform.position + (CoR * CoRWeight));
+        LR_CoR.SetPosition(1, transform.position + (CoR * FM.CoRWeight));
         // FishAvoid Red
         LR_AvoidFish.SetPosition(0, transform.position);
-        LR_AvoidFish.SetPosition(1, transform.position - (AvoidFish * AvoidFishWeight));
+        LR_AvoidFish.SetPosition(1, transform.position - (AvoidFish * FM.AvoidFishWeight));
         // Final Steering Black
         LR_Steering.SetPosition(0, transform.position);
         LR_Steering.SetPosition(1, transform.position + _steering);
