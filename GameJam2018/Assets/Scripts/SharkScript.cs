@@ -15,6 +15,7 @@ public class SharkScript : MonoBehaviour {
     public SharkManager SM;
 
     public SharkScript[] Others;
+    public FishScript[] Dinner;
 
 	// Use this for initialization
 	void Start () {

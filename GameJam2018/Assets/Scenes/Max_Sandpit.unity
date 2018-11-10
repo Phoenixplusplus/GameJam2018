@@ -200,6 +200,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1155994449471408, guid: 002ca3b7afc81474f8366f2c8e1470f6,
     type: 2}
   m_PrefabInternal: {fileID: 1927938409}
+--- !u!114 &813917559 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114028683063320970, guid: 002ca3b7afc81474f8366f2c8e1470f6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1927938409}
+  m_Script: {fileID: 11500000, guid: a893ecca7d54ada44b22201476499eb8, type: 3}
 --- !u!4 &934088539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4047957118338064, guid: ce3d5ab4db9cc424daac0ad679143756,
@@ -249,6 +255,11 @@ Prefab:
       propertyPath: shark
       value: 
       objectReference: {fileID: 934088539}
+    - target: {fileID: 114918137111787936, guid: 8e2a071e254b19a49bae072d25e1ae32,
+        type: 2}
+      propertyPath: FM
+      value: 
+      objectReference: {fileID: 813917559}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e2a071e254b19a49bae072d25e1ae32, type: 2}
   m_IsPrefabAsset: 0

@@ -15,6 +15,7 @@ public class FishManager : MonoBehaviour {
     public int FishCount = 20;
 
     public FishScript[] Pool;
+    public SharkScript[] Sharks;
 
     [Header("Fish Variables")]
     [Range(0, 20)]
@@ -57,15 +58,15 @@ public class FishManager : MonoBehaviour {
         }
     }
 
-    void RecieveSharks (SharkScript[] Sharkpool, SharkManager sender)
+    public void RecieveSharks (SharkScript[] Sharkpool, SharkManager sender)
     {
-
+        foreach (FishScript fs in Pool)
+        {
+            fs.Sharks = Sharkpool;
+        }
+        sender.AcceptFish(Pool);
     }
 
-    public FishScript[] SendFish ()
-    {
-        return Pool;
-    }
 
 	
 }
