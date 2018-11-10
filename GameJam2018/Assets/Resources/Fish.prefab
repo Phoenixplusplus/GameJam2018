@@ -528,6 +528,8 @@ MonoBehaviour:
   ID: 0
   Speed: {x: 0, y: 0, z: 0}
   MaxSpeed: {x: 0, y: 0, z: 0}
+  redFishy: {fileID: 0}
+  goldFishy: {fileID: 0}
   LR_CoM: {fileID: 120319415879425712}
   LR_CoR: {fileID: 120027779642518888}
   LR_AvoidFish: {fileID: 120144604723885016}

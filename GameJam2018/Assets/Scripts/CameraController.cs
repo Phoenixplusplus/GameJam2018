@@ -7,14 +7,17 @@ public class CameraController : MonoBehaviour {
     public Transform LowerPoint;
     public Transform UpperPoint;
     private GameObject Following;
+    private bool isFollowing;
+    private Transform Anchor;
     public FishManager FM;
+    public Vector3 Disp = new Vector3(0, 2, -1);
     public float LowerFoV = 30;
     public float UpperFoV = 50;
     public float LowerRot = 8.5f;
     public float UpperRot = 14f;
     public float ScrollSense = 0.5f;
-    public float SWShift = 20;
-    public float ADShift = 20;
+    public float SWShift = 150;
+    public float ADShift = 50;
     public float scrollZoom = 20;
     [SerializeField] private float _Lerp = 1;
     [SerializeField] private bool LMBDown;
@@ -23,45 +26,15 @@ public class CameraController : MonoBehaviour {
     {
         FM = FindObjectOfType<FishManager>();
         LowerPoint.transform.localPosition = new Vector3(0, FM.height / 2, 0);
-        UpperPoint.transform.localPosition = new Vector3(FM.tankRadius, FM.height - FM.waterOffset - 1, 0);
-        tag = "MainCamera";
+        UpperPoint.transform.localPosition = new Vector3(FM.tankRadius, FM.height + FM.waterOffset + 1, 0);
         UpdateCameraZoom();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") != 0)
-        {
-            if (Input.GetAxis("Mouse ScrollWheel") > 0 && _Lerp <= 0.01f)
-            {
-                ZoomIN();
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0 && _Lerp >= 1)
-            {
-                ZoomOUT();
-            }
-            else
-            {
-                _Lerp -= Input.GetAxis("Mouse ScrollWheel") * ScrollSense;
-                _Lerp = Mathf.Clamp(_Lerp, 0.01f, 1);
-            }
-        }
-
-        if (Input.GetMouseButtonDown(1)) LMBDown = true;
-        if (Input.GetMouseButtonUp(1)) LMBDown = false;
-        if (LMBDown)
-        {
-            if (Input.GetAxis("Mouse X") !=0) RollRIGHT(Input.GetAxis("Mouse X"));   
-            if (Input.GetAxis("Mouse Y") != 0) RollUP(-Input.GetAxis("Mouse Y"));
-        }
-
-        if (Input.GetKey("w")) RollUP(-1f);
-        if (Input.GetKey("s")) RollUP(1f);
-        if (Input.GetKey("a")) RollRIGHT(-1f);
-        if (Input.GetKey("d")) RollRIGHT(1f);
-        if (Input.GetKey("q")) ZoomOUT();
-        if (Input.GetKey("e")) ZoomIN();
+        if (Input.GetKey("t")) FollowRandomFISH();
+        if (Input.GetKey("y")) FollowRandomShark();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -80,6 +53,48 @@ public class CameraController : MonoBehaviour {
                 }
             }
         }
+
+        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0 && _Lerp <= 0.01f)
+            {
+                ZoomIN();
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0 && _Lerp >= 1)
+            {
+                ZoomOUT();
+            }
+            else
+            {
+                _Lerp -= Input.GetAxis("Mouse ScrollWheel") * ScrollSense;
+                _Lerp = Mathf.Clamp(_Lerp, 0.01f, 1);
+            }
+        }
+
+        if (isFollowing)
+        {
+            transform.position = Anchor.transform.position - (Anchor.transform.forward * 0.5f);
+            transform.LookAt(Anchor.transform.position);
+            return;
+        }
+
+
+        if (Input.GetMouseButtonDown(1)) LMBDown = true;
+        if (Input.GetMouseButtonUp(1)) LMBDown = false;
+        if (LMBDown)
+        {
+            if (Input.GetAxis("Mouse X") !=0) RollRIGHT(Input.GetAxis("Mouse X"));   
+            if (Input.GetAxis("Mouse Y") != 0) RollUP(-Input.GetAxis("Mouse Y"));
+        }
+
+        if (Input.GetKey("w")) RollUP(-1f);
+        if (Input.GetKey("s")) RollUP(1f);
+        if (Input.GetKey("a")) RollRIGHT(-1f);
+        if (Input.GetKey("d")) RollRIGHT(1f);
+        if (Input.GetKey("q")) ZoomOUT();
+        if (Input.GetKey("e")) ZoomIN();
+
+
 
 
         // For Dev purposes ... to find optimal camera angle/ boom positions 
@@ -109,11 +124,30 @@ public class CameraController : MonoBehaviour {
 
     void StartFollowing()
     {
-
-        Vector3 Disp = Following.transform.position - transform.position - LowerPoint.localPosition;
-        transform.Translate(Disp);
-
+        Anchor = Following.transform.Find("CameraAnchor").transform;
+        isFollowing = true;
     }
+
+    public void StopFollowing()
+    {
+        transform.parent = null;
+        isFollowing = false;
+    }
+
+    public void FollowRandomFISH ()
+    {
+        FishScript meh = FM.Fish[Random.Range(0, FM.Fish.Length - 1)];
+        Anchor = meh.transform;
+        isFollowing = true;
+    }
+
+    public void FollowRandomShark()
+    {
+        SharkScript meh = FM.Sharks[Random.Range(0, FM.Sharks.Length - 1)];
+        Anchor = meh.transform;
+        isFollowing = true;
+    }
+
 
     void UpdateCameraZoom()
     {
