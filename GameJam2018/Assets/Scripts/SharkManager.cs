@@ -6,6 +6,7 @@ public class SharkManager : MonoBehaviour {
 
     public Transform shark;
     public SharkScript[] SharkPool;
+    public FishManager FM;
 
     public int SharkCount = 5;
     public int tankheight = 50;
@@ -33,8 +34,17 @@ public class SharkManager : MonoBehaviour {
         {
             SharkPool[i].Others = SharkPool;
         }
+        FM.RecieveSharks(SharkPool,this);
     }
 	
+    public void AcceptFish (FishScript[] dinner)
+    {
+        foreach (SharkScript ss in SharkPool)
+        {
+            ss.Dinner = dinner;
+        }
+    }
+
 	// Update is called once per frame
 	void Update () {
 		

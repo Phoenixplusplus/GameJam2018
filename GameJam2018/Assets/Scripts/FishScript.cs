@@ -17,6 +17,7 @@ public class FishScript : MonoBehaviour {
     public LineRenderer LR_Steering;
 
     public FishScript[] Others;
+    public SharkScript[] Sharks;
 
     public Vector3 CoM;
     int CoMCount;
