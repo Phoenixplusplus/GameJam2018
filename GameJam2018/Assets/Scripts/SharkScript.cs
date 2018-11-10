@@ -39,14 +39,15 @@ public class SharkScript : MonoBehaviour {
         prey = Vector3.zero;
         Tank = Vector3.zero;
 
+
+        SearchForTank();
         SearchForLunch();
         SearchForSharks();
-        SearchForTank();
-
         ApplyWeighting();
         ApplySteering();
+        BellyDown();
 
-    if (Input.GetKeyUp("p")) ToggleDebug();
+        if (Input.GetKeyUp("p")) ToggleDebug();
         if (DEBUG) UpdateLineRenderers();
 
     }
@@ -167,5 +168,7 @@ private void UpdateLineRenderers ()
 
         transform.Translate(transform.forward * SM.Speed * Time.deltaTime, Space.World);
     }
+
+    private void BellyDown() { transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(transform.rotation.x, transform.rotation.y, 0, 1), Time.deltaTime); }
 
 }

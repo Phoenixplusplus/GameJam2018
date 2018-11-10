@@ -51,7 +51,7 @@ public class UI : MonoBehaviour {
     void Start ()
     {
         FM = FMO.GetComponent<FishManager>();
-        timeleft = 5f;
+        timeleft = 120f;
 
         NoTimeO.gameObject.SetActive(false);
     }

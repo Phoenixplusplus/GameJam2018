@@ -59,11 +59,13 @@ public class FishScript : MonoBehaviour {
         ClosestSharkRange = FM.tankRadius * 2;
         Tank = Vector3.zero;
 
+
+        ScanTank();
         ScanFish();
         ScanSharks();
-        ScanTank();
         ApplyWeighting();
         ApplySteering();
+        BellyDown();
 
         if (Input.GetKeyUp("p")) ToggleDebug();
         if (DEBUG) UpdateLineRenderers();
@@ -195,6 +197,8 @@ public class FishScript : MonoBehaviour {
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_steering, transform.up), Time.deltaTime);
         transform.Translate(transform.forward * FM.Speed * Time.deltaTime, Space.World);
     }
+
+    private void BellyDown() { transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(transform.rotation.x, transform.rotation.y, 0, 1), Time.deltaTime); }
 
     private void UpdateLineRenderers()
     {

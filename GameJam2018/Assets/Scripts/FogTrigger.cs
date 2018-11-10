@@ -18,7 +18,7 @@ public class FogTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Main Camera")
+        if (other.name == "CameraBoom")
         {
             RenderSettings.fog = true;
             tankMaterial.color = new Color(0.08957814f, 0.2421157f, 0.3113208f, 1f);
@@ -27,7 +27,7 @@ public class FogTrigger : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.name == "Main Camera")
+        if (other.name == "CameraBoom")
         {
             RenderSettings.fog = false;
             tankMaterial.color = new Color(tankMaterial.color.r, tankMaterial.color.g, tankMaterial.color.b, 0.25f);

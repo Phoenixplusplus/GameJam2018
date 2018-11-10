@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour {
 
     [Header("Tank Attributes")]
     [Range(200, 1000)]
-    public float tankRadius = 500f;
+    public float tankRadius = 200f;
     [Range(100, 300)]
     public float tankHeight = 100f;
     [Range(0, 50)]

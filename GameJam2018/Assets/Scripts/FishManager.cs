@@ -44,8 +44,8 @@ public class FishManager : MonoBehaviour {
     public float AvoidFishWeight = 0.2f;
     [Range(0, 20)]
     public float SharkAvoidWeight = 10;
-    [Range(0, 20)]
-    public float TankAvoidWeight = 2;
+    [Range(0, 40)]
+    public float TankAvoidWeight = 40;
 
 
     // Use this for initialization
