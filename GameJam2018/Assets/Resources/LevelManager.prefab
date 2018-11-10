@@ -61,6 +61,7 @@ MonoBehaviour:
     type: 2}
   floorPrefab: {fileID: 1930323298195522, guid: 5e62efec8292f6240a9547742904db49,
     type: 2}
+  waterPrefab: {fileID: 100006, guid: b544816461f324e56a39767fdeb5b114, type: 2}
   tankRadius: 500
   tankHeight: 100
   waterOffset: 3

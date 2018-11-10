@@ -18,7 +18,6 @@ public class SharkManager : MonoBehaviour {
     public float TurnRate = 90;
     public float SharkAvoidVisionFactor = 0.9f;
     public float SharkAvoidWeight = 10;
-    public Vector3 prey;
     public float PreyWeight = 10;
     public float TankAvoidVisionFactor = 0.5f;
     public float TankAvoidWeight = 10;

@@ -26,11 +26,13 @@ public class FishManager : MonoBehaviour {
     public float Speed = 3;
     [Range(0, 90)]
     public float TurnRate = 90;
-    [Range(0, 20)]
+    [Range(0, 30)]
     public float Vision = 20;
     [Range (0,1)]
     public float AvoidFishVisionRatio = 0.2f;
-    
+    [Range(0, 1)]
+    public float AvoidTankVisionRatio = 0.2f;
+
     [Header("WEIGHTINGS")]
     [Range(0, 20)]
     public float CoMWeight = 10;

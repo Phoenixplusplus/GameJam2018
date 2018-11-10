@@ -16,6 +16,7 @@ public class FishScript : MonoBehaviour {
     public LineRenderer LR_CoR;
     public LineRenderer LR_AvoidFish;
     public LineRenderer LR_Steering;
+    public LineRenderer LR_SHARK;
 
     public Vector3 CoM;
     int CoMCount;
@@ -26,8 +27,9 @@ public class FishScript : MonoBehaviour {
     public float AvoidFishVisionRatio = 0.2f;
     public Vector3 AvoidFish;
     public float ClosestFishRange;
+    public Vector3 Shark;
+    public float ClosestSharkRange;
 
-    public float AvoidTankVisionRatio = 0.2f;
     public float tankRange;
     public Vector3 Tank;
 
@@ -46,8 +48,9 @@ public class FishScript : MonoBehaviour {
         CoR = Vector3.zero;
         CoRCount = 0;
         AvoidFish = Vector3.zero;
-        ClosestFishRange = FM.tankRadius * 2; 
-        turnSpeed = FM.TurnRate;
+        ClosestFishRange = FM.tankRadius * 2;
+        Shark = Vector3.zero;
+        ClosestSharkRange = FM.tankRadius * 2;
         Tank = Vector3.zero;
 
         ScanFish();
@@ -103,7 +106,19 @@ public class FishScript : MonoBehaviour {
 
     private void ScanSharks()
     {
-
+        foreach (SharkScript ss in FM.Sharks)
+        {
+            float range = Vector3.Distance(transform.position, ss.transform.position);
+            if (range <= FM.Vision)
+            {
+                if (range < ClosestSharkRange)
+                {
+                    ClosestSharkRange = range;
+                    Shark = ss.transform.position - transform.position;
+                }
+            }
+        }
+        Shark.Normalize();
     }
 
     private void ScanTank()
@@ -117,7 +132,7 @@ public class FishScript : MonoBehaviour {
         float rangeBottom = Vector3.Distance(new Vector3(0, transform.position.y, 0), BottomTankPos);
         if (rangeBottom < FM.Vision)
         {
-            if (rangeBottom <= FM.Vision * AvoidTankVisionRatio)
+            if (rangeBottom <= FM.Vision * FM.AvoidTankVisionRatio)
             {
                 if (rangeBottom <= FM.TankAvoidWeight)
                     Tank = Vector3.down;
@@ -127,7 +142,7 @@ public class FishScript : MonoBehaviour {
         float rangeTop = Vector3.Distance(new Vector3(0, transform.position.y, 0), TopTankPos);
         if (rangeTop < FM.Vision)
         {
-            if (rangeTop <= FM.Vision * AvoidTankVisionRatio)
+            if (rangeTop <= FM.Vision * FM.AvoidTankVisionRatio)
             {
                 if (rangeTop <= FM.TankAvoidWeight)
                     Tank = Vector3.up;
@@ -141,7 +156,7 @@ public class FishScript : MonoBehaviour {
 
     private void ApplyWeighting()
     {
-        _steering = (CoM * FM.CoMWeight) + (CoR * FM.CoRWeight) - (AvoidFish * FM.AvoidFishWeight) -  (Tank * FM.TankAvoidWeight);
+        _steering = (CoM * FM.CoMWeight) + (CoR * FM.CoRWeight) - (AvoidFish * FM.AvoidFishWeight) -  (Tank * FM.TankAvoidWeight) - (Shark * FM. SharkAvoidWeight);
         if (_steering == Vector3.zero) _steering = FM.GetWand(transform.forward);
     }
 
@@ -166,6 +181,9 @@ public class FishScript : MonoBehaviour {
         // Final Steering Black
         LR_Steering.SetPosition(0, transform.position);
         LR_Steering.SetPosition(1, transform.position + _steering);
+
+        LR_SHARK.SetPosition(0, transform.position);
+        LR_SHARK.SetPosition(1, transform.position + Shark * FM.SharkAvoidWeight);
     }
 
 
