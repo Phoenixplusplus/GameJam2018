@@ -130,6 +130,7 @@ public class SharkScript : MonoBehaviour {
         _steering = Vector3.zero + (prey * SM.PreyWeight) - (shark * SM.SharkAvoidWeight) - (Tank * SM.TankAvoidWeight);
         if (_steering == Vector3.zero) _steering = SM.GetWand(transform.forward);
     }
+
     private void ApplySteering()
     {
         Quaternion Steer = Quaternion.Euler(_steering) * transform.rotation;
