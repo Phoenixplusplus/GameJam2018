@@ -28,8 +28,8 @@ public class FishScript : MonoBehaviour {
     public float ClosestFishRange;
 
     public float AvoidTankVisionRatio = 0.2f;
-    public Vector3 AvoidBottomTank;
-    public float ClosestBottomTankRange = 2f;
+    public float tankRange;
+    public Vector3 Tank;
 
 
 	// Use this for initialization
@@ -51,6 +51,9 @@ public class FishScript : MonoBehaviour {
         AvoidFish = Vector3.zero;
         ClosestFishRange = 10000000; // good enough for now, tie to tank size eventually
         turnSpeed = FM.TurnRate;
+        // Avoid 2 (Tank)
+        Tank = Vector3.zero;
+
 
         // Populates CoM, CoR and AvoidFish
         ScanFish();
@@ -65,14 +68,14 @@ public class FishScript : MonoBehaviour {
 
         // TO DO .... AVOID1 - Fish impact ---- DONE
         // TO DO .... AVOID2 - Nearest Shark
-        // TO DO .... AVOID3 - Tank Edge
-        // TO DO .... AVOID4 - Tank Bottom / Top
+        // TO DO .... AVOID3 - Tank Edge ---- DONE
+        // TO DO .... AVOID4 - Tank Bottom / Top ---- DONE
 
         // TO DO .... Apply Weighting to each
         // FIRST Pass weighting
 
         _steering = (CoM * FM.CoMWeight) + (CoR * FM.CoRWeight) - (AvoidFish * FM.AvoidFishWeight);
-        _steering -= (AvoidBottomTank * FM.TankAvoidWeight);
+        _steering -= (Tank * FM.TankAvoidWeight);
 
         //Debug.Log("Time to Search " + (Time.realtimeSinceStartup - start));
 
@@ -103,7 +106,7 @@ public class FishScript : MonoBehaviour {
                 float range = Vector3.Distance(transform.position, FS.transform.position);
                 if (range < FM.Vision)
                 {
-                    if (range <= FM.Vision * AvoidFishVisionRatio)
+                    if (range <= FM.Vision * FM.AvoidFishWeight)
                     {
                         if (range <= ClosestFishRange)
                         {
@@ -142,19 +145,35 @@ public class FishScript : MonoBehaviour {
 
     private void ScanTank()
     {
-        Vector3 BottomTankPos = new Vector3(transform.position.x, 0, transform.position.z);
-        float range = Vector3.Distance(transform.position, BottomTankPos);
-        if (range < FM.Vision)
+        tankRange = FM.tankRadius * 2;
+        //Tank = Vector3.zero;
+
+        // bottom
+        Vector3 BottomTankPos = new Vector3(0, 0, 0);
+        Vector3 TopTankPos = new Vector3(0, FM.height - FM.waterOffset, 0);
+        float rangeBottom = Vector3.Distance(new Vector3(0, transform.position.y, 0), BottomTankPos);
+        if (rangeBottom < FM.Vision)
         {
-            if (range <= FM.Vision * AvoidTankVisionRatio)
+            if (rangeBottom <= FM.Vision * AvoidTankVisionRatio)
             {
-                if (range <= ClosestBottomTankRange)
-                {
-                    AvoidBottomTank = BottomTankPos - transform.position;
-                }
+                if (rangeBottom <= FM.TankAvoidWeight)
+                    Tank = Vector3.down;
             }
         }
-
+        // top
+        float rangeTop = Vector3.Distance(new Vector3(0, transform.position.y, 0), TopTankPos);
+        if (rangeTop < FM.Vision)
+        {
+            if (rangeTop <= FM.Vision * AvoidTankVisionRatio)
+            {
+                if (rangeTop <= FM.TankAvoidWeight)
+                    Tank = Vector3.up;
+            }
+        }
+        // edge
+        float rangeEdge = FM.tankRadius - Mathf.Sqrt(transform.position.x * transform.position.x + transform.position.z * transform.position.z);
+        if (rangeEdge < FM.Vision && rangeEdge < tankRange)
+            Tank = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
     private void UpdateLineRenderers()
