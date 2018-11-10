@@ -10,7 +10,7 @@ public class Wander
         Vector3 result = Vector3.zero;
 
         Vector3 centre =  forward.normalized * range;
-        Vector3 Rand = new Vector3(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f));
+        Vector3 Rand = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         Rand.Normalize();
         result = centre + (Rand * radius);
         return result.normalized;
