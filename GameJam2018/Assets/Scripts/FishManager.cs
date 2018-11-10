@@ -12,9 +12,6 @@ public class FishManager : MonoBehaviour {
     public float tankRadius;
     public float waterOffset;
 
-
-    private bool DEBUG = false;
-
     public FishScript[] Fish;
     public SharkScript[] Sharks;
     public SharkManager SM;
