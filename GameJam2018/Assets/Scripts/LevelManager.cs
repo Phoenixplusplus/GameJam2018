@@ -39,7 +39,8 @@ public class LevelManager : MonoBehaviour {
         tankInner = Instantiate(tankInnerPrefab, Vector3.zero, Quaternion.identity);
         tankOutter = Instantiate(tankOutterPrefab, Vector3.zero, Quaternion.identity);
         tankTop = Instantiate(tankTopPrefab, Vector3.zero, Quaternion.identity);
-        floor = Instantiate(floorPrefab, Vector3.zero, Quaternion.identity);
+        floor = Instantiate(floorPrefab, new Vector3(0f, -1f, 0f), Quaternion.identity);
+        floor.transform.localScale = new Vector3(tankRadius / 2f, 1, tankRadius / 2f);
 
         FishManager FM = fishManager.GetComponent<FishManager>();
         FM.tankRadius = tankRadius;
