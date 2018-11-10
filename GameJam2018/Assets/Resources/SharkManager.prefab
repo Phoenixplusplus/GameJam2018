@@ -61,7 +61,7 @@ MonoBehaviour:
   Vision: 50
   Speed: 4
   TurnRate: 90
-  TankAvoidVisionFactor: 0.5
+  TankAvoidVisionFactor: 0.095
   SharkAvoidVisionFactor: 0.9
   SharkAvoidWeight: 5.4
   PreyWeight: 10.9

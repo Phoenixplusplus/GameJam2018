@@ -65,10 +65,10 @@ MonoBehaviour:
   Speed: 3
   TurnRate: 90
   Vision: 20
-  AvoidFishVisionRatio: 0.053
+  AvoidFishVisionRatio: 0.079
   AvoidTankVisionRatio: 0.2
   CoMWeight: 11.2
-  CoRWeight: 7
-  AvoidFishWeight: 13.1
+  CoRWeight: 5.6
+  AvoidFishWeight: 16.2
   SharkAvoidWeight: 12.6
   TankAvoidWeight: 20
