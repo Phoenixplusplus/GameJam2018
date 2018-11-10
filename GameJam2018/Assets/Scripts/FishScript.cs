@@ -75,7 +75,7 @@ public class FishScript : MonoBehaviour {
         // FIRST Pass weighting
 
         _steering = (CoM * CoMWeight) + (CoR * CoRWeight) - (AvoidFish * AvoidFishWeight);
-        
+
 
         //Debug.Log("Time to Search " + (Time.realtimeSinceStartup - start));
 
@@ -87,10 +87,18 @@ public class FishScript : MonoBehaviour {
 
         //transform.rotation = Quaternion.LookRotation(_steering, Vector3.up);
 
-        Quaternion Steer = Quaternion.Euler(_steering) * transform.rotation;
-        transform.rotation = Quaternion.Lerp(transform.rotation, Steer, Time.deltaTime * 25);
+        //Quaternion Steer = Quaternion.Euler(_steering) * transform.rotation;
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Steer, Time.deltaTime * 25);
 
-        transform.Translate(transform.forward * FM.Speed * Time.deltaTime,Space.World);
+        //Quaternion.Euler(_steering);
+
+        Vector3 finalangle = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, _steering.x, Time.deltaTime * 25),
+                                        Mathf.LerpAngle(transform.eulerAngles.y, _steering.y, Time.deltaTime * 25),
+                                        Mathf.LerpAngle(transform.eulerAngles.z, _steering.z, Time.deltaTime * 25));
+
+        transform.eulerAngles = finalangle;
+
+        transform.Translate(transform.forward * FM.Speed * Time.deltaTime, Space.World);
 
         if (DEBUG) UpdateLineRenderers();
 
