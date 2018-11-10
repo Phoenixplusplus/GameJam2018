@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour {
     public GameObject floorPrefab;
     public GameObject waterPrefab;
     public GameObject fogTriggerPrefab;
+    public GameObject coral1Prefab;
 
     private GameObject tankInner;
     private GameObject tankOutter;
@@ -30,6 +31,8 @@ public class LevelManager : MonoBehaviour {
     public float tankHeight = 100f;
     [Range(0, 50)]
     public float waterOffset = 3f;
+    [Range(0, 50)]
+    public int coralCount = 50;
 
     [Header("Spawn Attributes")]
     [Range(0,1)]
@@ -44,9 +47,14 @@ public class LevelManager : MonoBehaviour {
         tankInner = Instantiate(tankInnerPrefab, Vector3.zero, Quaternion.identity);
         tankOutter = Instantiate(tankOutterPrefab, Vector3.zero, Quaternion.identity);
         tankTop = Instantiate(tankTopPrefab, Vector3.zero, Quaternion.identity);
-        floor = Instantiate(floorPrefab, new Vector3(0f, -1f, 0f), Quaternion.identity);
+        floor = Instantiate(floorPrefab, new Vector3(0f, 1f, 0f), Quaternion.identity);
         floor.transform.localScale = new Vector3(tankRadius / 2f, 1, tankRadius / 2f);
         fogTrigger = Instantiate(fogTriggerPrefab, Vector3.zero, Quaternion.identity);
+
+        for (int i = 0; i < coralCount; i++)
+        {
+            Instantiate(coral1Prefab, new Vector3(Random.Range(-1f, 1f) * tankRadius, 1f, Random.Range(-1f, 1f) * tankRadius), Quaternion.identity);
+        }
 
         FishManager FM = fishManager.GetComponent<FishManager>();
         FM.tankRadius = tankRadius;
