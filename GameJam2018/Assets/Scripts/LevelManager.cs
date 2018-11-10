@@ -13,11 +13,13 @@ public class LevelManager : MonoBehaviour {
     public GameObject tankOutterPrefab;
     public GameObject tankTopPrefab;
     public GameObject floorPrefab;
+    public GameObject waterPrefab;
 
     private GameObject tankInner;
     private GameObject tankOutter;
     private GameObject tankTop;
     private GameObject floor;
+    private GameObject water;
 
     [Header("Tank Attributes")]
     [Range(200, 1000)]
@@ -36,6 +38,7 @@ public class LevelManager : MonoBehaviour {
     void Start ()
     {
         // instantiate level
+        water = Instantiate(waterPrefab, Vector3.zero, Quaternion.identity);
         tankInner = Instantiate(tankInnerPrefab, Vector3.zero, Quaternion.identity);
         tankOutter = Instantiate(tankOutterPrefab, Vector3.zero, Quaternion.identity);
         tankTop = Instantiate(tankTopPrefab, Vector3.zero, Quaternion.identity);
@@ -48,6 +51,8 @@ public class LevelManager : MonoBehaviour {
         FM.spawnRadius = tankRadius * fishSpawnCutoff;
         FM.waterOffset = waterOffset;
 
+        // delete water to fix texture bug
+        Destroy(water);
     }
 	
 	// Update is called once per frame
