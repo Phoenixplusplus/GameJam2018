@@ -10,6 +10,7 @@ public class FishScript : MonoBehaviour {
     public Vector3 Speed;
     public Vector3 MaxSpeed;
     private Vector3 _steering;
+    private float turnSpeed;
 
     public LineRenderer LR_CoM;
     public LineRenderer LR_CoR;
@@ -32,6 +33,10 @@ public class FishScript : MonoBehaviour {
     public float ClosestFishRange;
     public float AvoidFishWeight = 2;
 
+    public float AvoidTankVisionRatio = 0.2f;
+    public float AvoidTankWeight = 2f;
+    public Vector3 AvoidBottomTank;
+    public float ClosestBottomTankRange = 2f;
 
 
 	// Use this for initialization
@@ -55,6 +60,7 @@ public class FishScript : MonoBehaviour {
         // Avoid 1 (Fish)
         AvoidFish = Vector3.zero;
         ClosestFishRange = 10000000; // good enough for now, tie to tank size eventually
+        turnSpeed = FM.TurnRate;
 
         // Populates CoM, CoR and AvoidFish
         ScanFish();
@@ -76,7 +82,7 @@ public class FishScript : MonoBehaviour {
         // FIRST Pass weighting
 
         _steering = (CoM * CoMWeight) + (CoR * CoRWeight) - (AvoidFish * AvoidFishWeight);
-
+        _steering -= (AvoidBottomTank * AvoidTankWeight);
 
         //Debug.Log("Time to Search " + (Time.realtimeSinceStartup - start));
 
@@ -88,16 +94,9 @@ public class FishScript : MonoBehaviour {
 
         //transform.rotation = Quaternion.LookRotation(_steering, Vector3.up);
 
-        //Quaternion Steer = Quaternion.Euler(_steering) * transform.rotation;
+        Quaternion Steer = Quaternion.Euler(_steering) * transform.rotation;
         //transform.rotation = Quaternion.Lerp(transform.rotation, Steer, Time.deltaTime * 25);
-
-        //Quaternion.Euler(_steering);
-
-        Vector3 finalangle = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, _steering.x, Time.deltaTime * 25),
-                                        Mathf.LerpAngle(transform.eulerAngles.y, _steering.y, Time.deltaTime * 25),
-                                        Mathf.LerpAngle(transform.eulerAngles.z, _steering.z, Time.deltaTime * 25));
-
-        transform.eulerAngles = finalangle;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_steering, transform.up), Time.deltaTime);
 
         transform.Translate(transform.forward * FM.Speed * Time.deltaTime, Space.World);
 
@@ -153,6 +152,18 @@ public class FishScript : MonoBehaviour {
 
     private void ScanTank()
     {
+        Vector3 BottomTankPos = new Vector3(transform.position.x, 0, transform.position.z);
+        float range = Vector3.Distance(transform.position, BottomTankPos);
+        if (range < FM.Vision)
+        {
+            if (range <= FM.Vision * AvoidTankVisionRatio)
+            {
+                if (range <= ClosestBottomTankRange)
+                {
+                    AvoidBottomTank = BottomTankPos - transform.position;
+                }
+            }
+        }
 
     }
 
