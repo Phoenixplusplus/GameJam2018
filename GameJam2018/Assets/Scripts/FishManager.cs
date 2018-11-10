@@ -74,4 +74,40 @@ public class FishManager : MonoBehaviour {
         return Wand.WanderSteer(forward, WanderRadius, WanderRange);
     }
 
+    // restart default settings
+    public void RestartDefaultSettings()
+    {
+        DeleteFish();
+        {
+            FishCount = 20;
+            WanderRange = 50;
+            WanderRadius = 20;
+            Speed = 3;
+            TurnRate = 90;
+            Vision = 20;
+            AvoidFishVisionRatio = 0.2f;
+            AvoidTankVisionRatio = 0.2f;
+            CoMWeight = 10;
+            CoRWeight = 1;
+            AvoidFishWeight = 0.2f;
+            SharkAvoidWeight = 10;
+            TankAvoidWeight = 2;
+        }
+    }
+
+    // restart same settings
+    public void RestartSameSettings()
+    {
+        DeleteFish();
+    }
+
+    // delete fish and restart
+    public void DeleteFish()
+    {
+        foreach (FishScript fs in Fish)
+        {
+            Destroy(fs.gameObject);
+        }
+        Start();
+    }
 }

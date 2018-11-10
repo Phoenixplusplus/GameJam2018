@@ -158,6 +158,8 @@ MonoBehaviour:
   ID: 0
   Speed: {x: 0, y: 0, z: 0}
   MaxSpeed: {x: 0, y: 0, z: 0}
+  redFishy: {fileID: 2100000, guid: 2b13568c7b96a6f4cace18632d8ad422, type: 2}
+  goldFishy: {fileID: 2100000, guid: 8adf8bbbcfac7274f9ed43a3cce77906, type: 2}
   LR_CoM: {fileID: 120614495370830030, guid: 573b82fd8168f944793d8e0d3495a394, type: 2}
   LR_CoR: {fileID: 120987309234610852, guid: d0d268a2c21321b49942fd62b8e9f240, type: 2}
   LR_AvoidFish: {fileID: 120122039009525716, guid: 0bd3a88eadcec6e479f256cd50cebd6c,

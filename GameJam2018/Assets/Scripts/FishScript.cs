@@ -12,6 +12,9 @@ public class FishScript : MonoBehaviour {
     private Vector3 _steering;
     private float turnSpeed;
 
+    public Material redFishy;
+    public Material goldFishy;
+
     public LineRenderer LR_CoM;
     public LineRenderer LR_CoR;
     public LineRenderer LR_AvoidFish;
@@ -35,9 +38,12 @@ public class FishScript : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
-
-	}
+	void Start ()
+    {
+        float rand = Random.Range(1, 4);
+        if (rand == 2) transform.Find("Fishy/default").GetComponent<Renderer>().material = redFishy;
+        if (rand == 3) transform.Find("Fishy/default").GetComponent<Renderer>().material = goldFishy;
+    }
 	
 	// Update is called once per frame
 	void Update ()

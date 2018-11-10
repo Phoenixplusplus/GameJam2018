@@ -56,4 +56,13 @@ public class SharkManager : MonoBehaviour {
         return Wand.WanderSteer(forward, WanderRadius, WanderRange);
     }
 
+    // delete sharks and restart
+    public void DeleteShark()
+    {
+        foreach (SharkScript ss in Sharks)
+        {
+            Destroy(ss.gameObject);
+        }
+        Start();
+    }
 }
