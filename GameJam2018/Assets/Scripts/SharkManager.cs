@@ -5,7 +5,8 @@ using UnityEngine;
 public class SharkManager : MonoBehaviour {
 
     public Transform shark;
-    public SharkScript[] SharkPool;
+    public FishScript[] Fish;
+    public SharkScript[] Sharks;
     public FishManager FM;
 
     public int SharkCount = 5;
@@ -15,38 +16,31 @@ public class SharkManager : MonoBehaviour {
     public float Speed = 4;
     public float TurnRate = 90;
     public float SharkAvoidVisionFactor = 0.9f;
-    public float SharkAvoidFactor = 10;
+    public float SharkAvoidWeight = 10;
+    public Vector3 prey;
     public float PreyWeight = 10;
     public float TankAvoidWeight = 10;
 
     // Use this for initialization
     void Start () {
-        SharkPool = new SharkScript[SharkCount];
+        Sharks = new SharkScript[SharkCount];
         for (int i = 0; i < SharkCount; i++)
         {
             float SpawnHeight = Random.Range(1f, tankheight - 1f);
             float SpawnAngle = Random.Range(0f, 2 * Mathf.PI);
-            Transform MyShark = Instantiate(shark, new Vector3(Mathf.Cos(SpawnAngle) * Random.Range(0, Spawnradius), SpawnHeight, Mathf.Sin(SpawnAngle) * Random.Range(0, Spawnradius)), Random.rotation);
-            SharkPool[i] = MyShark.GetComponent<SharkScript>();
-            SharkPool[i].ID = i;
+            Transform MyShark = Instantiate(shark, new Vector3(Mathf.Cos(SpawnAngle) * Random.Range(FM.spawnRadius + 1, FM.tankRadius- FM.spawnRadius -1), SpawnHeight, Mathf.Sin(SpawnAngle) * Random.Range(FM.spawnRadius + 1, FM.tankRadius - FM.spawnRadius - 1)), Random.rotation);
+            Sharks[i] = MyShark.GetComponent<SharkScript>();
+            Sharks[i].ID = i;
+            Sharks[i].SM = this;
         }
-        for (int i = 0; i < SharkCount; i++)
-        {
-            SharkPool[i].Others = SharkPool;
-        }
-        FM.RecieveSharks(SharkPool,this);
+        FM.Sharks = Sharks;
     }
 	
-    public void AcceptFish (FishScript[] dinner)
-    {
-        foreach (SharkScript ss in SharkPool)
-        {
-            ss.Dinner = dinner;
-        }
-    }
 
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
+
+
 }

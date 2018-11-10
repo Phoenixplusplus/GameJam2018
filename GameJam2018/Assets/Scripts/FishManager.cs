@@ -14,8 +14,9 @@ public class FishManager : MonoBehaviour {
     [Range(1, 200)]
     public int FishCount = 20;
 
-    public FishScript[] Pool;
+    public FishScript[] Fish;
     public SharkScript[] Sharks;
+    public SharkManager SM;
 
     [Header("Fish Variables")]
     [Range(0, 20)]
@@ -43,30 +44,18 @@ public class FishManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        Pool = new FishScript[FishCount];
+        Fish = new FishScript[FishCount];
         for(int i = 0; i < FishCount; i++)
         {
             float SpawnHeight = Random.Range(1f, height - waterOffset);
             float SpawnAngle = Random.Range(0f, 2*Mathf.PI);
             Transform MyFish = Instantiate(fish, new Vector3(Mathf.Cos(SpawnAngle) * Random.Range(0, spawnRadius), SpawnHeight, Mathf.Sin(SpawnAngle) * Random.Range(0, spawnRadius)), Random.rotation);
-            Pool[i] = MyFish.GetComponent<FishScript>();
-            Pool[i].ID = i;
+            Fish[i] = MyFish.GetComponent<FishScript>();
+            Fish[i].ID = i;
         }
-        for (int i = 0; i < FishCount; i++)
-        {
-            Pool[i].Others = Pool;
-        }
-    }
-
-    public void RecieveSharks (SharkScript[] Sharkpool, SharkManager sender)
-    {
-        foreach (FishScript fs in Pool)
-        {
-            fs.Sharks = Sharkpool;
-        }
-        sender.AcceptFish(Pool);
+        SM.Fish = Fish;
     }
 
 
-	
+
 }
