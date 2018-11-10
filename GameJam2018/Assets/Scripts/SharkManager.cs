@@ -8,6 +8,7 @@ public class SharkManager : MonoBehaviour {
     public FishScript[] Fish;
     public SharkScript[] Sharks;
     public FishManager FM;
+    public Wander Wand = new Wander();
 
     public int SharkCount = 5;
     public int tankheight = 50;
@@ -19,7 +20,10 @@ public class SharkManager : MonoBehaviour {
     public float SharkAvoidWeight = 10;
     public Vector3 prey;
     public float PreyWeight = 10;
+    public float TankAvoidVisionFactor = 0.5f;
     public float TankAvoidWeight = 10;
+    public float WanderRange = 50;
+    public float WanderRadius = 20;
 
     // Use this for initialization
     void Start () {
@@ -35,12 +39,10 @@ public class SharkManager : MonoBehaviour {
         }
         FM.Sharks = Sharks;
     }
-	
 
-	// Update is called once per frame
-	void Update () {
-
-	}
-
+    public Vector3 GetWand (Vector3 forward)
+    {
+        return Wand.WanderSteer(forward, WanderRadius, WanderRange);
+    }
 
 }
