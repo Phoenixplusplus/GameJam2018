@@ -59,7 +59,7 @@ public class UI : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        FishiesLeftT.text = FM.FishCount.ToString("0");
+        FishiesLeftT.text = FM.score.ToString("0");
         WanderRangeT.text = FM.WanderRange.ToString("0.0");
         WanderRadiusT.text = FM.WanderRadius.ToString("0.0");
         SpeedT.text = FM.Speed.ToString("0.0");
@@ -77,7 +77,7 @@ public class UI : MonoBehaviour {
         {
             timeleft = 0;
             NoTimeO.gameObject.SetActive(true);
-            NotimeT.text = "You ran out of time with " + FM.FishCount + " fishies left";
+            NotimeT.text = "You ran out of time with " + FM.score + " fishies left";
         }
 	}
 
@@ -118,7 +118,7 @@ public class UI : MonoBehaviour {
 
     public void ResetSliders()
     {
-        FishiesLeftT.text = FM.FishCount.ToString();
+        FishiesLeftT.text = FM.score.ToString();
         WanderRangeS.value = FM.WanderRange;
         WanderRadiusS.value = FM.WanderRadius;
         SpeedS.value = FM.Speed;

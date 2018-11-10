@@ -7,8 +7,9 @@ public class FishScript : MonoBehaviour {
     public FishManager FM;
     public bool DEBUG = true;
     public int ID;
-    public Vector3 Speed;
+    public float Speed;
     public Vector3 MaxSpeed;
+    public bool spent = false;
     private Vector3 _steering;
     private float turnSpeed;
     public bool isActive = true;
@@ -49,6 +50,7 @@ public class FishScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        Speed = FM.Speed;
         float rand = Random.Range(1, 4);
         if (rand == 2) transform.Find("Fishy/default").GetComponent<Renderer>().material = redFishy;
         if (rand == 3) transform.Find("Fishy/default").GetComponent<Renderer>().material = goldFishy;
@@ -157,6 +159,7 @@ public class FishScript : MonoBehaviour {
                 {
                     ClosestSharkRange = range;
                     Shark = ss.transform.position - transform.position;
+                    if (spent == false) StartCoroutine(Sprint());
                 }
             }
         }
@@ -196,6 +199,17 @@ public class FishScript : MonoBehaviour {
             Tank = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
+    IEnumerator Sprint()
+    {
+        spent = true;
+        Speed = 6;
+        yield return new WaitForSeconds(1.5f);
+        Speed = FM.Speed;
+        yield return new WaitForSeconds(5.5f);
+        spent = false;
+
+    }
+
     private void ApplyWeighting()
     {
         _steering = (CoM * FM.CoMWeight) + (CoR * FM.CoRWeight) - (AvoidFish * FM.AvoidFishWeight) -  (Tank * FM.TankAvoidWeight) - (Shark * FM. SharkAvoidWeight);
@@ -206,7 +220,7 @@ public class FishScript : MonoBehaviour {
     {
         Quaternion Steer = Quaternion.Euler(_steering) * transform.rotation;
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_steering, transform.up), Time.deltaTime);
-        transform.Translate(transform.forward * FM.Speed * Time.deltaTime, Space.World);
+        transform.Translate(transform.forward * Speed * Time.deltaTime, Space.World);
     }
 
     private void BellyDown() { transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(transform.rotation.x, transform.rotation.y, 0, 1), Time.deltaTime); }

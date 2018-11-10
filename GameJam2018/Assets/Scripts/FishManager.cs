@@ -42,7 +42,7 @@ public class FishManager : MonoBehaviour {
     [Range(0, 20)]
     public float CoRWeight = 1;
     [Range(0, 20)]
-    public float AvoidFishWeight = 0.2f;
+    public float AvoidFishWeight = 3.0f;
     [Range(0, 20)]
     public float SharkAvoidWeight = 10;
     [Range(0, 40)]
