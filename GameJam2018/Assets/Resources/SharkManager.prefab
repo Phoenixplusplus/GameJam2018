@@ -9,61 +9,52 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1155994449471408}
+  m_RootGameObject: {fileID: 1270903590019708}
   m_IsPrefabAsset: 1
---- !u!1 &1155994449471408
+--- !u!1 &1270903590019708
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4947252337416866}
-  - component: {fileID: 114028683063320970}
+  - component: {fileID: 4551962213864428}
+  - component: {fileID: 114918137111787936}
   m_Layer: 0
-  m_Name: FishManager
+  m_Name: SharkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4947252337416866
+--- !u!4 &4551962213864428
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1155994449471408}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 1270903590019708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114028683063320970
+--- !u!114 &114918137111787936
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1155994449471408}
+  m_GameObject: {fileID: 1270903590019708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a893ecca7d54ada44b22201476499eb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 362a2c9cd56366746bdffa3650daf099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fish: {fileID: 4815071560822074, guid: ec452a5114f4d8c49b15dc4683aea3a2, type: 2}
-  height: 50
-  spawnRadius: 50
-  tankRadius: 0
-  waterOffset: 4
-  FishCount: 50
-  Pool: []
-  Speed: 3
-  TurnRate: 90
-  Vision: 20
-  AvoidFishVisionRatio: 0.2
-  CoMWeight: 10
-  CoRWeight: 1
-  AvoidFishWeight: 2
-  SharkAvoidWeight: 10
-  TankAvoidWeight: 100
+  shark: {fileID: 0}
+  SharkPool: []
+  SharkCount: 5
+  tankheight: 50
+  Spawnradius: 100
+  Vision: 30
+  Speed: 4

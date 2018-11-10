@@ -261,60 +261,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
---- !u!1 &1467393150
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1467393152}
-  - component: {fileID: 1467393151}
-  m_Layer: 0
-  m_Name: LevelManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1467393151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1467393150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b432a512164a2dc468e7f240c1d5176f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishManager: {fileID: 32315705}
-  sharkManager: {fileID: 1961259450}
-  tankInnerPrefab: {fileID: 1272842583348320, guid: d8916350c7bc8f0438e396b2e8c7f730,
-    type: 2}
-  tankOutterPrefab: {fileID: 1036756570506124, guid: 031ccd265fe724947a41661addcb176c,
-    type: 2}
-  tankTopPrefab: {fileID: 1831257181761480, guid: 2f7b807aa2bbd1a478d78958cf4061ae,
-    type: 2}
-  floorPrefab: {fileID: 1930323298195522, guid: 5e62efec8292f6240a9547742904db49,
-    type: 2}
-  tankRadius: 500
-  tankHeight: 100
-  waterOffset: 3
-  fishSpawnCutoff: 0.2
---- !u!4 &1467393152
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1467393150}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1553682188
 Prefab:
   m_ObjectHideFlags: 0
@@ -376,6 +322,58 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 002ca3b7afc81474f8366f2c8e1470f6, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1001 &1628247335
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4083920230986076, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083920230986076, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083920230986076, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083920230986076, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083920230986076, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083920230986076, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083920230986076, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083920230986076, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114533918743245264, guid: bf79c0a8ac8b69546811844be0fbd1a0,
+        type: 2}
+      propertyPath: fishManager
+      value: 
+      objectReference: {fileID: 32315705}
+    - target: {fileID: 114533918743245264, guid: bf79c0a8ac8b69546811844be0fbd1a0,
+        type: 2}
+      propertyPath: sharkManager
+      value: 
+      objectReference: {fileID: 1961259450}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1961259450
 GameObject:

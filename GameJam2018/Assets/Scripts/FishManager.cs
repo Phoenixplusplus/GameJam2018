@@ -23,6 +23,20 @@ public class FishManager : MonoBehaviour {
     public float TurnRate = 90;
     [Range(0, 20)]
     public float Vision = 20;
+    [Range (0,1)]
+    public float AvoidFishVisionRatio = 0.2f;
+    
+    [Header("WEIGHTINGS")]
+    [Range(0, 20)]
+    public float CoMWeight = 10;
+    [Range(0, 20)]
+    public float CoRWeight = 1;
+    [Range(0, 20)]
+    public float AvoidFishWeight = 2;
+    [Range(0, 20)]
+    public float SharkAvoidWeight = 10;
+    [Range(0, 20)]
+    public float TankAvoidWeight = 100;
 
 
     // Use this for initialization
@@ -42,10 +56,16 @@ public class FishManager : MonoBehaviour {
             Pool[i].Others = Pool;
         }
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    void RecieveSharks (SharkScript[] Sharkpool, SharkManager sender)
     {
-		
-	}
+
+    }
+
+    public FishScript[] SendFish ()
+    {
+        return Pool;
+    }
+
+	
 }

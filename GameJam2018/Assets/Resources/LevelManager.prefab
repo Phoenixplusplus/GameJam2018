@@ -9,61 +9,59 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1155994449471408}
+  m_RootGameObject: {fileID: 1386738771273912}
   m_IsPrefabAsset: 1
---- !u!1 &1155994449471408
+--- !u!1 &1386738771273912
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4947252337416866}
-  - component: {fileID: 114028683063320970}
+  - component: {fileID: 4083920230986076}
+  - component: {fileID: 114533918743245264}
   m_Layer: 0
-  m_Name: FishManager
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4947252337416866
+--- !u!4 &4083920230986076
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1155994449471408}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 1386738771273912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114028683063320970
+--- !u!114 &114533918743245264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1155994449471408}
+  m_GameObject: {fileID: 1386738771273912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a893ecca7d54ada44b22201476499eb8, type: 3}
+  m_Script: {fileID: 11500000, guid: b432a512164a2dc468e7f240c1d5176f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fish: {fileID: 4815071560822074, guid: ec452a5114f4d8c49b15dc4683aea3a2, type: 2}
-  height: 50
-  spawnRadius: 50
-  tankRadius: 0
-  waterOffset: 4
-  FishCount: 50
-  Pool: []
-  Speed: 3
-  TurnRate: 90
-  Vision: 20
-  AvoidFishVisionRatio: 0.2
-  CoMWeight: 10
-  CoRWeight: 1
-  AvoidFishWeight: 2
-  SharkAvoidWeight: 10
-  TankAvoidWeight: 100
+  fishManager: {fileID: 0}
+  sharkManager: {fileID: 0}
+  tankInnerPrefab: {fileID: 1272842583348320, guid: d8916350c7bc8f0438e396b2e8c7f730,
+    type: 2}
+  tankOutterPrefab: {fileID: 1036756570506124, guid: 031ccd265fe724947a41661addcb176c,
+    type: 2}
+  tankTopPrefab: {fileID: 1831257181761480, guid: 2f7b807aa2bbd1a478d78958cf4061ae,
+    type: 2}
+  floorPrefab: {fileID: 1930323298195522, guid: 5e62efec8292f6240a9547742904db49,
+    type: 2}
+  tankRadius: 500
+  tankHeight: 100
+  waterOffset: 3
+  fishSpawnCutoff: 0.2
