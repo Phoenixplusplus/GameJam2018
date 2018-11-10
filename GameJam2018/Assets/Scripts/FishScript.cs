@@ -11,6 +11,7 @@ public class FishScript : MonoBehaviour {
     public Vector3 MaxSpeed;
     private Vector3 _steering;
     private float turnSpeed;
+    public bool isActive = true;
 
     public Material redFishy;
     public Material goldFishy;
@@ -37,6 +38,14 @@ public class FishScript : MonoBehaviour {
     public Vector3 Tank;
 
 
+    public void EatFish ()
+    {
+        FM.score--;
+        DEBUG = false;
+        transform.position = new Vector3(100000, 100000, 100000);
+        isActive = false;
+    }
+
 	// Use this for initialization
 	void Start ()
     {
@@ -59,16 +68,18 @@ public class FishScript : MonoBehaviour {
         ClosestSharkRange = FM.tankRadius * 2;
         Tank = Vector3.zero;
 
-
-        ScanTank();
-        ScanFish();
-        ScanSharks();
-        ApplyWeighting();
-        ApplySteering();
-        BellyDown();
+        if (isActive)
+        { 
+            ScanTank();
+            ScanFish();
+            ScanSharks();
+            ApplyWeighting();
+            ApplySteering();
+            BellyDown();
 
         if (Input.GetKeyUp("p")) ToggleDebug();
         if (DEBUG) UpdateLineRenderers();
+        }
 
     }
 

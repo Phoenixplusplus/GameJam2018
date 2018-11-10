@@ -11,6 +11,7 @@ public class FishManager : MonoBehaviour {
     public float spawnRadius;
     public float tankRadius;
     public float waterOffset;
+    public int score;
 
     public FishScript[] Fish;
     public SharkScript[] Sharks;
@@ -50,7 +51,7 @@ public class FishManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        score = FishCount;
         Fish = new FishScript[FishCount];
         for(int i = 0; i < FishCount; i++)
         {

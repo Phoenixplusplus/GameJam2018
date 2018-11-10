@@ -27,6 +27,8 @@ public class SharkManager : MonoBehaviour {
     public float TankAvoidVisionFactor = 0.5f;
     [Range(0,1)]
     public float SharkAvoidVisionFactor = 0.9f;
+    [Range(0,2)]
+    public float CatchRange = 1.0f;
 
     [Header("WEIGHTINGS")]
     [Range(0,20)]
