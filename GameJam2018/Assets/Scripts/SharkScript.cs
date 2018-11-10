@@ -101,7 +101,11 @@ private void UpdateLineRenderers ()
             float range = Vector3.Distance(transform.position, fs.transform.position);
             if (range < SM.Vision)
             {
-                if (range < preyRange)
+                if (range <= SM.CatchRange)
+                {
+                    fs.EatFish();
+                }
+                else if (range < preyRange)
                 {
                     preyRange = range;
                     prey = fs.transform.position - transform.position;

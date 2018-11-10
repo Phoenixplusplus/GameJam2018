@@ -134,11 +134,18 @@ public class CameraController : MonoBehaviour {
         isFollowing = false;
     }
 
-    public void FollowRandomFISH ()
+    public void FollowRandomFISH()
     {
         FishScript meh = FM.Fish[Random.Range(0, FM.Fish.Length - 1)];
-        Anchor = meh.transform;
-        isFollowing = true;
+        if (meh.isActive)
+        {
+            Anchor = meh.transform;
+            isFollowing = true;
+        }
+        else
+        {
+            FollowRandomFISH();
+        }
     }
 
     public void FollowRandomShark()
