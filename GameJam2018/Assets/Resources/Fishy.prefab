@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 114372850636359208}
   m_Layer: 0
   m_Name: Fishy
-  m_TagString: Untagged
+  m_TagString: HasCameraBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4428609845173446}
   m_Layer: 0
   m_Name: Fishy
-  m_TagString: Untagged
+  m_TagString: HasCameraBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 23515997201464204}
   m_Layer: 0
   m_Name: default
-  m_TagString: Untagged
+  m_TagString: HasCameraBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,7 +185,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558442606999616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -188.2163, y: 153.20473, z: 240.6709}
+  m_LocalPosition: {x: 1272.6072, y: 1020.9785, z: 647.78534}
   m_LocalScale: {x: 1.643242, y: 0.756, z: 0.756}
   m_Children:
   - {fileID: 4428609845173446}
@@ -306,8 +306,9 @@ MonoBehaviour:
   FM: {fileID: 0}
   DEBUG: 1
   ID: 0
-  Speed: {x: 0, y: 0, z: 0}
+  Speed: NaN
   MaxSpeed: {x: 0, y: 0, z: 0}
+  spent: 0
   isActive: 1
   redFishy: {fileID: 2100000, guid: 2b13568c7b96a6f4cace18632d8ad422, type: 2}
   goldFishy: {fileID: 2100000, guid: 8adf8bbbcfac7274f9ed43a3cce77906, type: 2}

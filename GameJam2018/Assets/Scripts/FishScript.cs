@@ -5,7 +5,7 @@ using UnityEngine;
 public class FishScript : MonoBehaviour {
 
     public FishManager FM;
-    public bool DEBUG = true;
+    public bool DEBUG = false;
     public int ID;
     public float Speed;
     public Vector3 MaxSpeed;
@@ -50,6 +50,7 @@ public class FishScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        DEBUG = false;
         Speed = FM.Speed;
         float rand = Random.Range(1, 4);
         if (rand == 2) transform.Find("Fishy/default").GetComponent<Renderer>().material = redFishy;

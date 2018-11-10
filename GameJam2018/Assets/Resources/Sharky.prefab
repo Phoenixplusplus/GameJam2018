@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 114394793389324866}
   m_Layer: 0
   m_Name: Sharky
-  m_TagString: Untagged
+  m_TagString: HasCameraBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 23372130811512934}
   m_Layer: 0
   m_Name: megalodon
-  m_TagString: Untagged
+  m_TagString: HasCameraBoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1408560336508232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -300.6739, y: 72.14286, z: -7.4370046}
+  m_LocalPosition: {x: 1270.2389, y: 1022.38654, z: 649.2793}
   m_LocalScale: {x: 1.24, y: 1.24, z: 1.24}
   m_Children:
   - {fileID: 4181641449871292}

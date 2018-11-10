@@ -124,7 +124,7 @@ public class CameraController : MonoBehaviour {
 
     void StartFollowing()
     {
-        Anchor = Following.transform.Find("CameraAnchor").transform;
+        Anchor = Following.transform;
         isFollowing = true;
     }
 

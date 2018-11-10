@@ -6,7 +6,7 @@ public class SharkScript : MonoBehaviour {
 
     private Vector3 _steering;
 
-    public bool DEBUG = true;
+    public bool DEBUG = false;
     public Vector3 prey;
     public float preyRange;
     public Vector3 Tank;
@@ -26,6 +26,7 @@ public class SharkScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SM = FindObjectOfType<SharkManager>();
+        DEBUG = false;
     }
 
     // Update is called once per frame
