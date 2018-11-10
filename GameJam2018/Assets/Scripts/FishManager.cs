@@ -11,10 +11,9 @@ public class FishManager : MonoBehaviour {
     public float spawnRadius;
     public float tankRadius;
     public float waterOffset;
-    [Range(1, 200)]
-    public int FishCount = 20;
-    public float WanderRange = 50;
-    public float WanderRadius = 20;
+
+
+    private bool DEBUG = false;
 
     public FishScript[] Fish;
     public SharkScript[] Sharks;
@@ -22,6 +21,12 @@ public class FishManager : MonoBehaviour {
     public Wander Wand = new Wander();
 
     [Header("Fish Variables")]
+    [Range(1, 500)]
+    public int FishCount = 20;
+    [Range(0,50)]
+    public float WanderRange = 50;
+    [Range(0, 20)]
+    public float WanderRadius = 20;
     [Range(0, 20)]
     public float Speed = 3;
     [Range(0, 90)]
@@ -61,6 +66,8 @@ public class FishManager : MonoBehaviour {
         }
         SM.Fish = Fish;
     }
+
+
 
     public Vector3 GetWand(Vector3 forward)
     {

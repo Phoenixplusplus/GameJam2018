@@ -65,4 +65,4 @@ MonoBehaviour:
   tankRadius: 500
   tankHeight: 100
   waterOffset: 3
-  fishSpawnCutoff: 0.2
+  fishSpawnCutoff: 0.105

@@ -253,20 +253,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114918137111787936, guid: 8e2a071e254b19a49bae072d25e1ae32,
         type: 2}
-      propertyPath: shark
-      value: 
-      objectReference: {fileID: 4047957118338064, guid: ce3d5ab4db9cc424daac0ad679143756,
-        type: 2}
-    - target: {fileID: 114918137111787936, guid: 8e2a071e254b19a49bae072d25e1ae32,
-        type: 2}
       propertyPath: FM
       value: 
       objectReference: {fileID: 813917559}
-    - target: {fileID: 114918137111787936, guid: 8e2a071e254b19a49bae072d25e1ae32,
-        type: 2}
-      propertyPath: SharkCount
-      value: 200
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e2a071e254b19a49bae072d25e1ae32, type: 2}
   m_IsPrefabAsset: 0
@@ -385,11 +374,6 @@ Prefab:
       propertyPath: sharkManager
       value: 
       objectReference: {fileID: 564391956}
-    - target: {fileID: 114533918743245264, guid: bf79c0a8ac8b69546811844be0fbd1a0,
-        type: 2}
-      propertyPath: fishSpawnCutoff
-      value: 0.105
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
   m_IsPrefabAsset: 0

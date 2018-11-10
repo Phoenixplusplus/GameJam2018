@@ -56,18 +56,19 @@ MonoBehaviour:
   spawnRadius: 0
   tankRadius: 0
   waterOffset: 0
-  FishCount: 20
-  WanderRange: 50
-  WanderRadius: 20
   Fish: []
   Sharks: []
   SM: {fileID: 0}
+  FishCount: 199
+  WanderRange: 50
+  WanderRadius: 20
   Speed: 3
   TurnRate: 90
   Vision: 20
-  AvoidFishVisionRatio: 0.2
-  CoMWeight: 10
-  CoRWeight: 1
-  AvoidFishWeight: 0.2
-  SharkAvoidWeight: 10
-  TankAvoidWeight: 2
+  AvoidFishVisionRatio: 0.053
+  AvoidTankVisionRatio: 0.2
+  CoMWeight: 11.2
+  CoRWeight: 7
+  AvoidFishWeight: 13.1
+  SharkAvoidWeight: 12.6
+  TankAvoidWeight: 20

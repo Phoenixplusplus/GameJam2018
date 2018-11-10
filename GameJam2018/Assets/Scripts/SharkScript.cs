@@ -46,11 +46,39 @@ public class SharkScript : MonoBehaviour {
         ApplyWeighting();
         ApplySteering();
 
-        UpdateLineRenderers();
+    if (Input.GetKeyUp("p")) ToggleDebug();
+        if (DEBUG) UpdateLineRenderers();
 
     }
 
-    private void UpdateLineRenderers ()
+            
+        
+
+
+
+private void ToggleDebug()
+{
+    if (DEBUG)
+    {
+        LR_Avoid.enabled = false;
+        LR_Steer.enabled = false;
+        LR_Dinner.enabled = false;
+        LR_Tank.enabled = false;
+        DEBUG = false;
+    }
+    else
+    {
+            LR_Avoid.enabled = true;
+            LR_Steer.enabled = true;
+            LR_Dinner.enabled = true;
+            LR_Tank.enabled = true;
+            DEBUG = true;
+    }
+}
+
+
+
+private void UpdateLineRenderers ()
     {
         LR_Avoid.SetPosition(0,transform.position);
         LR_Avoid.SetPosition(1, transform.position + shark * SM.SharkAvoidWeight);
@@ -111,7 +139,7 @@ public class SharkScript : MonoBehaviour {
         }
         if (transform.position.y > SM.FM.height - SM.FM.waterOffset - Vis)
         {
-            if (SM.tankheight - SM.Vision < tankRange)
+            if (SM.FM.height - SM.FM.waterOffset - SM.Vision < tankRange)
             {
                 tankRange = transform.position.y;
                 Tank = Vector3.up;

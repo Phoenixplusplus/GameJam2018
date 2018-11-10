@@ -59,8 +59,31 @@ public class FishScript : MonoBehaviour {
         ApplyWeighting();
         ApplySteering();
 
+        if (Input.GetKeyUp("p")) ToggleDebug();
         if (DEBUG) UpdateLineRenderers();
 
+    }
+
+    private void ToggleDebug()
+    {
+        if (DEBUG)
+        {
+            LR_CoM.enabled = false;
+            LR_CoR.enabled = false;
+            LR_AvoidFish.enabled = false;
+            LR_Steering.enabled = false;
+            LR_SHARK.enabled = false;
+            DEBUG = false;
+        }
+        else
+        {
+            LR_CoM.enabled = true;
+            LR_CoR.enabled = true;
+            LR_AvoidFish.enabled = true;
+            LR_Steering.enabled = true;
+            LR_SHARK.enabled = true;
+            DEBUG = true;
+        }
     }
 
     private void ScanFish()
@@ -72,7 +95,7 @@ public class FishScript : MonoBehaviour {
                 float range = Vector3.Distance(transform.position, FS.transform.position);
                 if (range < FM.Vision)
                 {
-                    if (range <= FM.Vision * FM.AvoidFishWeight)
+                    if (range <= FM.Vision * FM.AvoidFishVisionRatio)
                     {
                         if (range <= ClosestFishRange)
                         {
