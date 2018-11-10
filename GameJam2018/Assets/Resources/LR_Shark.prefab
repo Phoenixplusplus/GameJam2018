@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1938346042843126}
+  m_RootGameObject: {fileID: 1189215050590852}
   m_IsPrefabAsset: 1
---- !u!1 &1938346042843126
+--- !u!1 &1189215050590852
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4572727269212698}
-  - component: {fileID: 120122039009525716}
+  - component: {fileID: 4874646681729190}
+  - component: {fileID: 120624326379004216}
   m_Layer: 0
-  m_Name: LR_AvoidFish
+  m_Name: LR_Shark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4572727269212698
+--- !u!4 &4874646681729190
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938346042843126}
+  m_GameObject: {fileID: 1189215050590852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -56.36568, y: 28.714426, z: -12.319393}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,12 +40,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!120 &120122039009525716
+--- !u!120 &120624326379004216
 LineRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1938346042843126}
+  m_GameObject: {fileID: 1189215050590852}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -55,7 +55,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3b0145dfd039b274c8f86c11cb69cdec, type: 2}
+  - {fileID: 2100000, guid: c8d39d2afa716fe44bbe21584fc12831, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

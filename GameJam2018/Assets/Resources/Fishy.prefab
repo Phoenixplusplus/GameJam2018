@@ -164,11 +164,13 @@ MonoBehaviour:
     type: 2}
   LR_Steering: {fileID: 120624326379004216, guid: 12d9f81907334954fbb87eb10f8b4200,
     type: 2}
+  LR_SHARK: {fileID: 120624326379004216, guid: 9682d10e8cb60ab48afaa59279236e44, type: 2}
   CoM: {x: 0, y: 0, z: 0}
   CoR: {x: 0, y: 0, z: 0}
   AvoidFishVisionRatio: 0.2
   AvoidFish: {x: 0, y: 0, z: 0}
   ClosestFishRange: 0
-  AvoidTankVisionRatio: 0.2
+  Shark: {x: 0, y: 0, z: 0}
+  ClosestSharkRange: 0
   tankRange: 0
   Tank: {x: 0, y: 0, z: 0}

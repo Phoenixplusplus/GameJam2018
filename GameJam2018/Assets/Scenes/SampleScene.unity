@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.08391966, g: 0, b: 0.8584906, a: 1}
+  m_FogColor: {r: 0.22561412, g: 0.2830189, b: 0.22561412, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.003
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -269,6 +269,8 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
+  - component: {fileID: 534669907}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -330,12 +332,35 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 33.38, z: -67.37}
+  m_LocalPosition: {x: -5.6, y: 133, z: -209.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a46d2be4216ed564a8b297e3904d3db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &534669907
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1553682188
 Prefab:
   m_ObjectHideFlags: 0
@@ -473,6 +498,22 @@ Prefab:
       propertyPath: waterPrefab
       value: 
       objectReference: {fileID: 100006, guid: 843740dbe549a4a6ba9556d1b80001f5, type: 2}
+    - target: {fileID: 114533918743245264, guid: bf79c0a8ac8b69546811844be0fbd1a0,
+        type: 2}
+      propertyPath: tankRadius
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114533918743245264, guid: bf79c0a8ac8b69546811844be0fbd1a0,
+        type: 2}
+      propertyPath: fishSpawnCutoff
+      value: 0.472
+      objectReference: {fileID: 0}
+    - target: {fileID: 114533918743245264, guid: bf79c0a8ac8b69546811844be0fbd1a0,
+        type: 2}
+      propertyPath: fogTriggerPrefab
+      value: 
+      objectReference: {fileID: 1461451842136478, guid: 208c3798b0c695e42af8ef19824d7ac3,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf79c0a8ac8b69546811844be0fbd1a0, type: 2}
   m_IsPrefabAsset: 0
@@ -515,7 +556,6 @@ MonoBehaviour:
   TurnRate: 90
   SharkAvoidVisionFactor: 0.9
   SharkAvoidWeight: 10
-  prey: {x: 0, y: 0, z: 0}
   PreyWeight: 10
   TankAvoidVisionFactor: 0.5
   TankAvoidWeight: 10
