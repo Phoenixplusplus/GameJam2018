@@ -41,57 +41,20 @@ public class FishScript : MonoBehaviour {
 	void Update ()
     {
         // Reset counters and references
-        // CentreOfMass
         CoM = Vector3.zero;
         CoMCount = 0;
-        // Centre of Rotation
         CoR = Vector3.zero;
         CoRCount = 0;
-        // Avoid 1 (Fish)
         AvoidFish = Vector3.zero;
-        ClosestFishRange = 10000000; // good enough for now, tie to tank size eventually
+        ClosestFishRange = FM.tankRadius * 2; 
         turnSpeed = FM.TurnRate;
-        // Avoid 2 (Tank)
         Tank = Vector3.zero;
 
-
-        // Populates CoM, CoR and AvoidFish
         ScanFish();
-
-        // Populates AvoidShark
         ScanSharks();
-
-        // Determines TankEdge Avoidance
         ScanTank();
-
-        //double start = Time.realtimeSinceStartup;
-
-        // TO DO .... AVOID1 - Fish impact ---- DONE
-        // TO DO .... AVOID2 - Nearest Shark
-        // TO DO .... AVOID3 - Tank Edge ---- DONE
-        // TO DO .... AVOID4 - Tank Bottom / Top ---- DONE
-
-        // TO DO .... Apply Weighting to each
-        // FIRST Pass weighting
-
-        _steering = (CoM * FM.CoMWeight) + (CoR * FM.CoRWeight) - (AvoidFish * FM.AvoidFishWeight);
-        _steering -= (Tank * FM.TankAvoidWeight);
-
-        //Debug.Log("Time to Search " + (Time.realtimeSinceStartup - start));
-
-
-        //Quaternion target = Quaternion.Euler(CoR.x, CoR.y, CoR.z);
-        // Dampen towards the target rotation
-        //transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * FM.TurnRate);
-        //transform.Rotate(transform.up, FM.TurnRate * Time.deltaTime);
-
-        //transform.rotation = Quaternion.LookRotation(_steering, Vector3.up);
-
-        Quaternion Steer = Quaternion.Euler(_steering) * transform.rotation;
-        //transform.rotation = Quaternion.Lerp(transform.rotation, Steer, Time.deltaTime * 25);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_steering, transform.up), Time.deltaTime);
-
-        transform.Translate(transform.forward * FM.Speed * Time.deltaTime, Space.World);
+        ApplyWeighting();
+        ApplySteering();
 
         if (DEBUG) UpdateLineRenderers();
 
@@ -146,7 +109,7 @@ public class FishScript : MonoBehaviour {
     private void ScanTank()
     {
         tankRange = FM.tankRadius * 2;
-        //Tank = Vector3.zero;
+        Tank = Vector3.zero;
 
         // bottom
         Vector3 BottomTankPos = new Vector3(0, 0, 0);
@@ -174,6 +137,19 @@ public class FishScript : MonoBehaviour {
         float rangeEdge = FM.tankRadius - Mathf.Sqrt(transform.position.x * transform.position.x + transform.position.z * transform.position.z);
         if (rangeEdge < FM.Vision && rangeEdge < tankRange)
             Tank = new Vector3(transform.position.x, 0, transform.position.z);
+    }
+
+    private void ApplyWeighting()
+    {
+        _steering = (CoM * FM.CoMWeight) + (CoR * FM.CoRWeight) - (AvoidFish * FM.AvoidFishWeight) -  (Tank * FM.TankAvoidWeight);
+        if (_steering == Vector3.zero) _steering = FM.GetWand(transform.forward);
+    }
+
+    private void ApplySteering()
+    {
+        Quaternion Steer = Quaternion.Euler(_steering) * transform.rotation;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_steering, transform.up), Time.deltaTime);
+        transform.Translate(transform.forward * FM.Speed * Time.deltaTime, Space.World);
     }
 
     private void UpdateLineRenderers()

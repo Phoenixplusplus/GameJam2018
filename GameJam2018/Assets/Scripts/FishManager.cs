@@ -13,10 +13,13 @@ public class FishManager : MonoBehaviour {
     public float waterOffset;
     [Range(1, 200)]
     public int FishCount = 20;
+    public float WanderRange = 50;
+    public float WanderRadius = 20;
 
     public FishScript[] Fish;
     public SharkScript[] Sharks;
     public SharkManager SM;
+    public Wander Wand = new Wander();
 
     [Header("Fish Variables")]
     [Range(0, 20)]
@@ -55,6 +58,11 @@ public class FishManager : MonoBehaviour {
             Fish[i].FM = this;
         }
         SM.Fish = Fish;
+    }
+
+    public Vector3 GetWand(Vector3 forward)
+    {
+        return Wand.WanderSteer(forward, WanderRadius, WanderRange);
     }
 
 }

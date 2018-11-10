@@ -52,18 +52,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fish: {fileID: 4815071560822074, guid: ec452a5114f4d8c49b15dc4683aea3a2, type: 2}
-  height: 50
-  spawnRadius: 50
+  height: 0
+  spawnRadius: 0
   tankRadius: 0
-  waterOffset: 4
-  FishCount: 50
-  Pool: []
+  waterOffset: 0
+  FishCount: 20
+  WanderRange: 50
+  WanderRadius: 20
+  Fish: []
+  Sharks: []
+  SM: {fileID: 0}
   Speed: 3
   TurnRate: 90
   Vision: 20
   AvoidFishVisionRatio: 0.2
   CoMWeight: 10
   CoRWeight: 1
-  AvoidFishWeight: 2
+  AvoidFishWeight: 0.2
   SharkAvoidWeight: 10
-  TankAvoidWeight: 100
+  TankAvoidWeight: 2
