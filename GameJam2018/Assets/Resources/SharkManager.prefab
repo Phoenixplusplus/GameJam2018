@@ -51,10 +51,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362a2c9cd56366746bdffa3650daf099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shark: {fileID: 0}
-  SharkPool: []
-  SharkCount: 5
-  tankheight: 50
-  Spawnradius: 100
-  Vision: 30
+  shark: {fileID: 4047957118338064, guid: ce3d5ab4db9cc424daac0ad679143756, type: 2}
+  Fish: []
+  Sharks: []
+  FM: {fileID: 0}
+  SharkCount: 28
+  WanderRange: 50
+  WanderRadius: 20
+  Vision: 50
   Speed: 4
+  TurnRate: 90
+  TankAvoidVisionFactor: 0.5
+  SharkAvoidVisionFactor: 0.9
+  SharkAvoidWeight: 5.4
+  PreyWeight: 10.9
+  TankAvoidWeight: 20
